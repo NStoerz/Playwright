@@ -40,13 +40,13 @@ export default defineConfig({
   projects: [
     // Setup projects
     { name: 'setup', testMatch: /.*\.setup\.ts/ },
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'],
+    //{
+      //name: 'chromium',
+      //use: { ...devices['Desktop Chrome'],
         // Use prepared auth state.
-        storageState: 'playwright/.auth/user.json',
-      },
-    },
+        //storageState: 'playwright/.auth/user.json',
+      //},
+    //},
 
     {
       name: 'firefox',
@@ -54,14 +54,15 @@ export default defineConfig({
         // Use prepared auth state.
         storageState: 'playwright/.auth/user.json',
       },
+      dependencies: ['setup'],
     },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'],
-      storageState: 'playwright/.auth/user.json',
-      },
-    },
+    //{
+      //name: 'webkit',
+     // use: { ...devices['Desktop Safari'],
+      //storageState: 'playwright/.auth/user.json',
+      //},
+    //},
 
     /* Test against mobile viewports. */
     // {
