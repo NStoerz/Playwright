@@ -8,6 +8,4 @@ node_modules/
 /playwright/.auth/
 /secret/
 .env
-.auth
-tests/playwright\.auth
-tests/playwright/.auth
+user.json
