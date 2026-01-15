@@ -1,5 +1,12 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
-test('PostAuth test', async ({ page }) => {
+test('PostAuth test, pre logged in', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/inventory.html');
+    await expect(page.locator('[data-test="title"]')).toBeVisible();
+});
+
+test('Add item to cart', async ({ page }) => {
+    await page.goto('https://www.saucedemo.com/inventory.html');
+    await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
+    await expect(page.locator('[data-test="shopping-cart-badge"]')).toContainText('1');
 });
