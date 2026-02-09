@@ -12,17 +12,24 @@ test('Add item to cart', async ({ page }) => {
     await expect(page.locator('[data-test="shopping-cart-badge"]')).toContainText('1');
 });
 
+test('Log out', async ({ page }) => {
+    await page.goto('https://www.saucedemo.com/inventory.html');
+    await page.locator('#react-burger-menu-btn').click();
+    await page.locator('#logout_sidebar_link').click();
+    await expect(page.locator('[data-test="login-button"]')).toBeVisible();
+});
+
 
 // Read and process the exported Excel file, summing up a specific column
-const XLSX = require('xlsx');
+// const XLSX = require('xlsx');
 
-const workbook = XLSX.readFile('export.xlsx');
-const sheetName = workbook.SheetNames[0];
-const worksheet = workbook.Sheets[sheetName];
-const data = XLSX.utils.sheet_to_json(worksheet);
+// const workbook = XLSX.readFile('export.xlsx');
+// const sheetName = workbook.SheetNames[0];
+// const worksheet = workbook.Sheets[sheetName];
+// const data = XLSX.utils.sheet_to_json(worksheet);
 
-const totalAmount = data.reduce((sum, row) => {
-  return sum + (Number(row.Amount) || 0);
-}, 0);
+// const totalAmount = data.reduce((sum, row) => {
+//   return sum + (Number(row.Amount) || 0);
+// }, 0);
 
-console.log('Total Amount:', totalAmount);
+// console.log('Total Amount:', totalAmount);
