@@ -7,9 +7,9 @@ setup('authenticate', async ({ page }) => {
   // Perform authentication steps. Replace these actions with your own.
   await page.goto('https://www.saucedemo.com');
   await page.locator('[data-test="username"]').click();
-  await page.locator('[data-test="username"]').fill(process.env.LOGIN);
+  await page.locator('[data-test="username"]').fill(process.env.LOGIN!);
   await page.locator('[data-test="password"]').click();
-  await page.locator('[data-test="password"]').fill(process.env.PASSWORD);
+  await page.locator('[data-test="password"]').fill(process.env.PASSWORD!);
   await page.locator('[data-test="login-button"]').click();
   // Wait until the page receives the cookies.
   //
