@@ -1,3 +1,5 @@
+//Test cases for post authentication login, validating that user is logged in, logging out
+
 import { test, expect } from '@playwright/test';
 const xlsx = require('xlsx');
 
@@ -7,11 +9,6 @@ test.beforeEach('Open test site', async ({ page }) => {
 
 test('PostAuth test, pre logged in', async ({ page }) => {
     await expect(page.locator('[data-test="title"]')).toBeVisible();
-});
-
-test('Add item to cart', async ({ page }) => {
-    await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-    await expect(page.locator('[data-test="shopping-cart-badge"]')).toContainText('1');
 });
 
 test('Log out', async ({ page }) => {

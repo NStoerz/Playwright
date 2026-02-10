@@ -1,3 +1,5 @@
+//Test cases for cart actions, adding and removing items from cart, and validating the cart badge count
+
 import { test, expect } from '@playwright/test';
 
 test.beforeEach('Open test site', async ({ page }) => {
