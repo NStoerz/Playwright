@@ -1,19 +1,20 @@
 import { test, expect } from '@playwright/test';
 const xlsx = require('xlsx');
 
-test('PostAuth test, pre logged in', async ({ page }) => {
+test.beforeEach('Open test site', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/inventory.html');
+});
+
+test('PostAuth test, pre logged in', async ({ page }) => {
     await expect(page.locator('[data-test="title"]')).toBeVisible();
 });
 
 test('Add item to cart', async ({ page }) => {
-    await page.goto('https://www.saucedemo.com/inventory.html');
     await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
     await expect(page.locator('[data-test="shopping-cart-badge"]')).toContainText('1');
 });
 
 test('Log out', async ({ page }) => {
-    await page.goto('https://www.saucedemo.com/inventory.html');
     await page.locator('#react-burger-menu-btn').click();
     await page.locator('#logout_sidebar_link').click();
     await expect(page.locator('[data-test="login-button"]')).toBeVisible();
