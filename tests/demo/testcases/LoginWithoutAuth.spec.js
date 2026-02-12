@@ -17,3 +17,10 @@ test('Locked out user cannot login', async ({ page }) => {
     await page.locator('[data-test="login-button"]').click();
     await expect(page.locator('[class="error-message-container error"]')).toContainText('Epic sadface: Sorry, this user has been locked out.');
 });
+
+test('Login with performance glitch user', async ({ page }) => {
+    await page.locator('[data-test="username"]').fill('performance_glitch_user');
+    await page.locator('[data-test="password"]').fill('secret_sauce');
+    await page.locator('[data-test="login-button"]').click();
+    await expect(page.locator('[data-test="title"]')).toBeVisible();
+});
